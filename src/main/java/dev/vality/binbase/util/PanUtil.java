@@ -25,8 +25,4 @@ public class PanUtil {
         return StringUtils.rightPad(pan.substring(0, Math.min(pan.length(), 6)), pan.length(), '*');
     }
 
-    public static void main(String[] args) {
-        System.out.println(toLongValue("100001"));
-    }
-
 }
