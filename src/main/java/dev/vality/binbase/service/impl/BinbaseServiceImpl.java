@@ -168,8 +168,8 @@ public class BinbaseServiceImpl implements BinbaseService {
     }
 
     private boolean isCorrectRange(Range<Long> range) {
-        return range.lowerEndpoint() > BinBaseConstant.MIN_LOWER_ENDPOINT
-                && range.upperEndpoint() < BinBaseConstant.MAX_UPPER_ENDPOINT;
+        return range.lowerEndpoint() >= BinBaseConstant.MIN_LOWER_ENDPOINT
+                && range.upperEndpoint() <= BinBaseConstant.MAX_UPPER_ENDPOINT;
     }
 
     @Override

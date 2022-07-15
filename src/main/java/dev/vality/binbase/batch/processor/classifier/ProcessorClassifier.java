@@ -12,7 +12,7 @@ import org.springframework.classify.Classifier;
 import java.util.Map;
 
 @RequiredArgsConstructor
-public class ProcessorClassifier<T>
+public class ProcessorClassifier
         implements Classifier<BinBaseData, ItemProcessor<?, Map.Entry<BinData, Range<Long>>>> {
 
     private final BinBaseXmlProcessor binBaseXmlProcessor;
@@ -20,13 +20,9 @@ public class ProcessorClassifier<T>
 
     @Override
     public ItemProcessor<?, Map.Entry<BinData, Range<Long>>> classify(BinBaseData data) {
-        switch (data.getDataType()) {
-            case XML:
-                return binBaseXmlProcessor;
-            case CSV:
-                return binBaseCsvProcessor;
-            default:
-                throw new IllegalArgumentException("Unknown binBase data type: " + data);
-        }
+        return switch (data.getDataType()) {
+            case XML -> binBaseXmlProcessor;
+            case CSV -> binBaseCsvProcessor;
+        };
     }
 }
