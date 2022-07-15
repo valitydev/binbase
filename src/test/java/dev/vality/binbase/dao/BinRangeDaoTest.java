@@ -1,13 +1,13 @@
 package dev.vality.binbase.dao;
 
 import com.google.common.collect.Range;
-import dev.vality.binbase.AbstractIntegrationTest;
 import dev.vality.binbase.config.PostgresqlTest;
 import dev.vality.binbase.domain.BinData;
 import dev.vality.binbase.domain.BinRange;
 import dev.vality.binbase.exception.DaoException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -18,7 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Transactional
 @PostgresqlTest
-public class BinRangeDaoTest extends AbstractIntegrationTest {
+@SpringBootTest
+class BinRangeDaoTest {
 
     public static final long LOWER_EDGE = 1_000_000_000_000_000_000L;
     public static final long UPPER_EDGE = 2_000_000_000_000_000_000L;

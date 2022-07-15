@@ -1,6 +1,5 @@
 package dev.vality.binbase.batch;
 
-import dev.vality.binbase.AbstractIntegrationTest;
 import dev.vality.binbase.config.PostgresqlTest;
 import dev.vality.binbase.domain.CountryCode;
 import dev.vality.damsel.binbase.*;
@@ -8,17 +7,24 @@ import dev.vality.woody.thrift.impl.http.THSpawnClientBuilder;
 import org.apache.thrift.TException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.TestPropertySource;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 
 @TestPropertySource(properties = {"batch.file_path=classpath:/data/binbase/case1", "batch.strict_mode=false"})
 @PostgresqlTest
-class BatchUploadTest extends AbstractIntegrationTest {
+@SpringBootTest(webEnvironment = RANDOM_PORT)
+class BatchUploadTest {
+
+    @LocalServerPort
+    protected int port;
 
     private BinbaseSrv.Iface binbaseClient;
 

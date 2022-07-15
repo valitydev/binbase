@@ -1,12 +1,12 @@
 package dev.vality.binbase.dao;
 
-import dev.vality.binbase.AbstractIntegrationTest;
 import dev.vality.binbase.config.PostgresqlTest;
 import dev.vality.binbase.domain.BinData;
 import dev.vality.binbase.domain.BinRange;
 import dev.vality.binbase.exception.DaoException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import static io.github.benas.randombeans.api.EnhancedRandom.random;
@@ -14,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Transactional
 @PostgresqlTest
-class BinDataDaoTest extends AbstractIntegrationTest {
+@SpringBootTest
+class BinDataDaoTest {
 
     @Autowired
     private BinDataDao binDataDao;
