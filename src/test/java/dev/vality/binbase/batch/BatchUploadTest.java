@@ -8,7 +8,7 @@ import org.apache.thrift.TException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.TestPropertySource;
 
 import java.net.URI;
@@ -81,7 +81,7 @@ class BatchUploadTest {
     }
 
     @Test
-    void testWhenWhenPanInWrongFormat() throws TException {
+    void testWhenWhenPanInWrongFormat() {
         assertThrows(BinNotFound.class,
                 () -> binbaseClient.lookup("999999#Q", Reference.last(new Last())));
         assertThrows(BinNotFound.class,
