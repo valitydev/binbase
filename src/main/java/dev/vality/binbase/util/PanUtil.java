@@ -20,7 +20,10 @@ public class PanUtil {
         // add left 0 to get conventionally formatted pan (as it was before) and then produce correct-length range
         String lpaddedPan = pan.length() < 6 ? StringUtils.leftPad(pan, 6, "0") : pan;
         return Long.parseLong(
-                StringUtils.rightPad(lpaddedPan.substring(0, Math.min(lpaddedPan.length(), RIGHT_PAD_SIZE)), DEFAULT_SIZE, "0"));
+                StringUtils.rightPad(lpaddedPan.substring(
+                                0, Math.min(lpaddedPan.length(), RIGHT_PAD_SIZE)
+                        ),
+                        DEFAULT_SIZE, "0"));
     }
 
     public static String formatPan(String pan) {
