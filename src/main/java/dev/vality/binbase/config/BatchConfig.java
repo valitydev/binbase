@@ -137,6 +137,4 @@ public class BatchConfig {
                 .listener(new DefaultChunkListener())
                 .build();
     }
-
-
 }
