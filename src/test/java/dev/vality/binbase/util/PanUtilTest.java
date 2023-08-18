@@ -3,6 +3,7 @@ package dev.vality.binbase.util;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -13,7 +14,7 @@ public class PanUtilTest {
         PanUtil.validatePan("220020");
         PanUtil.validatePan("2200200249999999999");
         assertThrows(IllegalArgumentException.class, () -> PanUtil.validatePan("22003/"));
-        assertThrows(IllegalArgumentException.class, () -> PanUtil.validatePan("22003"));
+        assertDoesNotThrow(() -> PanUtil.validatePan("22003"));
         assertThrows(IllegalArgumentException.class, () -> PanUtil.validatePan("22002002499999999999"));
     }
 
@@ -24,6 +25,9 @@ public class PanUtilTest {
         assertEquals(234234234234234234L, PanUtil.toLongValue("234234234234234234"));
         assertEquals(324234234234234432L, PanUtil.toLongValue("3242342342342344324"));
         assertEquals(999999999999999999L, PanUtil.toLongValue("9999999999999999999"));
+        assertEquals(100001000000000000L, PanUtil.toLongValue("100001"));
+        assertEquals(1244000000000000L, PanUtil.toLongValue("001244"));
+        assertEquals(1244000000000000L, PanUtil.toLongValue("1244"));
     }
 
     @Test

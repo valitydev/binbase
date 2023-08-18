@@ -97,6 +97,7 @@ public class BatchConfig {
         DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
         lineTokenizer.setNames(FILE_CSV_FIELDS);
         lineTokenizer.setDelimiter(CSV_DELIMITER);
+        lineTokenizer.setStrict(strictMode);
 
         BeanWrapperFieldSetMapper<BinBaseCsvData> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(BinBaseCsvData.class);
@@ -137,6 +138,4 @@ public class BatchConfig {
                 .listener(new DefaultChunkListener())
                 .build();
     }
-
-
 }
