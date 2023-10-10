@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>binbase</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
 
     <name>binbase</name>
@@ -29,7 +29,7 @@
         <db.password>postgres</db.password>
         <db.schema>binbase</db.schema>
         <damsel.version>1.568-9362c08</damsel.version>
-        <testcontainers.annotations.version>1.4.0</testcontainers.annotations.version>
+        <testcontainers.annotations.version>2.0.2</testcontainers.annotations.version>
     </properties>
 
     <dependencies>
