@@ -6,11 +6,11 @@
     <parent>
         <groupId>dev.vality</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>1.0.18</version>
+        <version>1.0.20</version>
     </parent>
 
     <artifactId>binbase</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
 
     <name>binbase</name>
@@ -28,8 +28,8 @@
         <db.user>postgres</db.user>
         <db.password>postgres</db.password>
         <db.schema>binbase</db.schema>
-        <damsel.version>1.568-9362c08</damsel.version>
-        <testcontainers.annotations.version>1.4.0</testcontainers.annotations.version>
+        <damsel.version>1.568-9361.606-f718741</damsel.version>
+        <testcontainers.annotations.version>1.4.0</te1.4.3
     </properties>
 
     <dependencies>
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>dev.vality</groupId>
             <artifactId>binbase-proto</artifactId>
-            <version>1.25-6841072</version>
+            <version>1.25-68411.26-23dbaf0</version>
         </dependency>
         <dependency>
             <groupId>dev.vality.geck</groupId>
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>dev.vality</groupId>
             <artifactId>cds-proto</artifactId>
-            <version>1.66-01353ce</version>
+            <version>1.66-01351.70-5227377</version>
         </dependency>
 
 
@@ -118,13 +118,12 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
+            <version>2.3.0</ve2.3.1
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>2.3.0</version>
-            <scope>runtime</scope>
+            <version>2.3.0</ve2.3.8</scope>
         </dependency>
         <dependency>
             <groupId>javax.activation</groupId>
@@ -144,7 +143,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <version>3.12.0</v3.13.0
         </dependency>
 
 
@@ -168,14 +167,12 @@
         <dependency>
             <groupId>io.github.benas</groupId>
             <artifactId>random-beans</artifactId>
-            <version>3.6.0</version>
-            <scope>test</scope>
+            <version>3.6.0</ve3.9.0</scope>
         </dependency>
         <dependency>
             <groupId>javax.xml.ws</groupId>
             <artifactId>jaxws-api</artifactId>
-            <version>2.3.0</version>
-            <scope>test</scope>
+            <version>2.3.0</ve2.3.1</scope>
         </dependency>
         <dependency>
             <groupId>dev.vality</groupId>
@@ -253,7 +250,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-remote-resources-plugin</artifactId>
-                <version>1.5</version>
+                <version>1.7.0</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.shared</groupId>
