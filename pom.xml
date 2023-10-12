@@ -19,7 +19,8 @@
 
     <properties>
         <server.port>8022</server.port>
-        <exposed.ports>${server.port}</exposed.ports>
+        <management.port>8023</management.port>
+        <exposed.ports>${server.port} ${management.port}</exposed.ports>
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <db.name>binbase</db.name>
