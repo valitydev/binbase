@@ -6,7 +6,7 @@
     <parent>
         <groupId>dev.vality</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>1.0.18</version>
+        <version>1.0.19</version>
     </parent>
 
     <artifactId>binbase</artifactId>
@@ -19,7 +19,8 @@
 
     <properties>
         <server.port>8022</server.port>
-        <exposed.ports>${server.port}</exposed.ports>
+        <management.port>8023</management.port>
+        <exposed.ports>${server.port} ${management.port}</exposed.ports>
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <db.name>binbase</db.name>
@@ -29,15 +30,11 @@
         <db.password>postgres</db.password>
         <db.schema>binbase</db.schema>
         <damsel.version>1.568-9362c08</damsel.version>
-        <testcontainers.annotations.version>1.4.0</testcontainers.annotations.version>
+        <testcontainers.annotations.version>1.4.3</testcontainers.annotations.version>
     </properties>
 
     <dependencies>
         <!--dev.vality libs-->
-        <dependency>
-            <groupId>dev.vality.woody</groupId>
-            <artifactId>woody-thrift</artifactId>
-        </dependency>
         <dependency>
             <groupId>dev.vality</groupId>
             <artifactId>binbase-proto</artifactId>
@@ -49,10 +46,6 @@
         </dependency>
         <dependency>
             <groupId>dev.vality</groupId>
-            <artifactId>shared-resources</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>dev.vality</groupId>
             <artifactId>damsel</artifactId>
             <version>${damsel.version}</version>
         </dependency>
@@ -61,7 +54,6 @@
             <artifactId>cds-proto</artifactId>
             <version>1.66-01353ce</version>
         </dependency>
-
 
         <!--spring -->
         <dependency>
@@ -83,14 +75,6 @@
 
         <!--third party-->
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
@@ -104,11 +88,6 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
@@ -146,7 +125,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
         </dependency>
-
 
         <!-- Tests -->
         <dependency>

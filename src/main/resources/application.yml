@@ -21,12 +21,25 @@ batch:
   shutdown_after_execute: false
 
 management:
+  server:
+    port: '@management.port@'
   metrics:
     export:
-      statsd:
+      prometheus:
         enabled: false
-        flavor: etsy
-  endpoint.health.show-details: always
+    tags:
+      application: wb-list-manager
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
 
 client:
   cds:
