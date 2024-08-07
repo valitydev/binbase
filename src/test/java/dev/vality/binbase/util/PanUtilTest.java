@@ -28,6 +28,7 @@ public class PanUtilTest {
         assertEquals(100001000000000000L, PanUtil.toLongValue("100001"));
         assertEquals(1244000000000000L, PanUtil.toLongValue("001244"));
         assertEquals(1244000000000000L, PanUtil.toLongValue("1244"));
+        assertEquals(976253000000000000L, PanUtil.toLongValue("976253"));
     }
 
     @Test

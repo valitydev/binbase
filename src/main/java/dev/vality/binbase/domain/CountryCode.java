@@ -259,7 +259,9 @@ public enum CountryCode {
     WF("Wallis and Futuna", "WLF", "876"),
     WS("Samoa", "WSM", "882"),
     YE("Yemen", "YEM", "887"),
-    ZM("Zambia", "ZMB", "894");
+    ZM("Zambia", "ZMB", "894"),
+    AB("Republic of Abkhazia", "ABH", "895"),
+    OS("Republic of South Ossetia", "OST", "896");
 
 
     private static final Map<String, CountryCode> alpha3Map = new HashMap<>();
