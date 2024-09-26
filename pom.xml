@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>binbase</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>binbase</name>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>dev.vality</groupId>
             <artifactId>cds-proto</artifactId>
-            <version>1.66-01353ce</version>
+            <version>1.70-5227377</version>
         </dependency>
 
         <!--spring -->
