@@ -4,7 +4,7 @@ import dev.vality.binbase.util.BinBaseDataType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @Data
 @NoArgsConstructor

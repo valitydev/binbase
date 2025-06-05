@@ -5,20 +5,28 @@ import dev.vality.binbase.domain.CountryCode;
 import dev.vality.damsel.binbase.*;
 import dev.vality.woody.thrift.impl.http.THSpawnClientBuilder;
 import org.apache.thrift.TException;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestPropertySource;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 
-@TestPropertySource(properties = {"batch.file_path=classpath:/data/binbase/case1", "batch.strict_mode=false"})
+//@TestPropertySource(properties = {"batch.file_path=classpath:/data/binbase/case1", "batch.strict_mode=false"})
 @PostgresqlTest
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class BatchUploadTest {
@@ -27,6 +35,29 @@ class BatchUploadTest {
     protected int port;
 
     private BinbaseSrv.Iface binbaseClient;
+
+    private static Path tempDir;
+
+    @BeforeAll
+    static void init() throws Exception {
+        tempDir = Files.createTempDirectory("binbase-case1");
+
+        Resource[] resources = new PathMatchingResourcePatternResolver()
+                .getResources("classpath:/data/binbase/case1/*.csv");
+
+        for (Resource resource : resources) {
+            Path dest = tempDir.resolve(resource.getFilename());
+            Files.copy(resource.getInputStream(), dest, StandardCopyOption.REPLACE_EXISTING);
+        }
+
+        System.out.println("✅ Copied test CSVs to: " + tempDir.toAbsolutePath());
+    }
+
+    @DynamicPropertySource
+    static void overrideProps(DynamicPropertyRegistry registry) {
+        registry.add("batch.file_path", () -> tempDir.toAbsolutePath().toString());
+        registry.add("batch.strict_mode", () -> "false");
+    }
 
     @BeforeEach
     public void setup() throws URISyntaxException {

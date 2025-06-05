@@ -1,16 +1,16 @@
 server:
-  port: '@server.port@'
+  port: ${server.port}
 
 spring:
   application:
-    name: '@name@'
-    description: '@description@'
+    name: ${name}
+    description: ${description}
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
-    url: '@db.url@'
-    username: '@db.user@'
-    password: '@db.password@'
+    url: ${db.url}
+    username: ${db.user}
+    password: ${db.password}
   batch:
     jdbc:
       initialize-schema: always
@@ -22,7 +22,7 @@ batch:
 
 management:
   server:
-    port: '@management.port@'
+    port: ${management.port}
   metrics:
     export:
       prometheus:

@@ -4,8 +4,8 @@ import dev.vality.damsel.binbase.BinbaseSrv;
 import dev.vality.woody.thrift.impl.http.THServiceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
 import java.io.IOException;
 
 @WebServlet("/v1/binbase")

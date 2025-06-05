@@ -16,7 +16,7 @@ public class DefaultChunkListener implements ChunkListener {
 
     @Override
     public void afterChunk(ChunkContext context) {
-        int readCount = context.getStepContext().getStepExecution().getReadCount();
+        long readCount = context.getStepContext().getStepExecution().getReadCount();
         if (readCount > 0 && readCount % loggingInterval == 0) {
             log.info("{} rows processed", readCount);
         }
