@@ -9,15 +9,9 @@ import dev.vality.damsel.binbase.Last;
 import dev.vality.damsel.binbase.Reference;
 import dev.vality.damsel.binbase.ResponseData;
 import dev.vality.woody.thrift.impl.http.THSpawnClientBuilder;
-import lombok.SneakyThrows;
 import org.apache.thrift.TException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobParameters;
-import org.springframework.batch.core.JobParametersBuilder;
-import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.TestPropertySource;
@@ -42,19 +36,8 @@ class BatchUploadTest {
 
     private BinbaseSrv.Iface binbaseClient;
 
-    @Autowired
-    private JobLauncher jobLauncher;
-    @Autowired
-    private Job binBaseJob;
-
-    @SneakyThrows
     @BeforeEach
     public void setup() throws URISyntaxException {
-        JobParameters jobParameters = new JobParametersBuilder()
-                .addLong("timestamp", System.currentTimeMillis())
-                .toJobParameters();
-        jobLauncher.run(binBaseJob, jobParameters);
-
         binbaseClient = new THSpawnClientBuilder()
                 .withAddress(new URI("http://localhost:" + port + "/v1/binbase"))
                 .withNetworkTimeout(0)
