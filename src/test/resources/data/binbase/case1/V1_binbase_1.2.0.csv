@@ -1,2 +1,9 @@
-100001;PRIVATE LABEL;CENTRAL SUPPLIES - TDFS;;;CANADA;CA;CAN;124;;;;;
-100115;UATP;;;;;;;0;;;;;
+bin,countryCode,cardType,version
+100001,USA,credit,3
+100001,USA,credit_or_debit,2
+100001,CA,,1
+100115,,,
+100117,,,
+430288,AW,,1
+4302885002,AW,,4
+
