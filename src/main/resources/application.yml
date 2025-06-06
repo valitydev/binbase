@@ -24,9 +24,6 @@ management:
   server:
     port: ${management.port}
   metrics:
-    export:
-      prometheus:
-        enabled: false
     tags:
       application: wb-list-manager
   endpoint:
@@ -40,6 +37,10 @@ management:
     web:
       exposure:
         include: health,info,prometheus
+  prometheus:
+    metrics:
+      export:
+        enabled: false
 
 client:
   cds:
