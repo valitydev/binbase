@@ -2,7 +2,12 @@ package dev.vality.binbase.batch;
 
 import dev.vality.binbase.config.PostgresqlTest;
 import dev.vality.binbase.domain.CountryCode;
-import dev.vality.damsel.binbase.*;
+import dev.vality.damsel.binbase.BinNotFound;
+import dev.vality.damsel.binbase.BinbaseSrv;
+import dev.vality.damsel.binbase.CardType;
+import dev.vality.damsel.binbase.Last;
+import dev.vality.damsel.binbase.Reference;
+import dev.vality.damsel.binbase.ResponseData;
 import dev.vality.woody.thrift.impl.http.THSpawnClientBuilder;
 import org.apache.thrift.TException;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +19,10 @@ import org.springframework.test.context.TestPropertySource;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 

@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@PostgresqlTestcontainerSingleton
+@PostgresqlTestcontainerSingleton(truncateTables = false)
 public @interface PostgresqlTest {
 }

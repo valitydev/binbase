@@ -15,10 +15,10 @@ import dev.vality.binbase.service.BinbaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.MultiResourceItemReader;
 import org.springframework.batch.item.file.builder.MultiResourceItemReaderBuilder;
@@ -29,17 +29,15 @@ import org.springframework.batch.item.support.ClassifierCompositeItemProcessor;
 import org.springframework.batch.item.support.builder.ClassifierCompositeItemProcessorBuilder;
 import org.springframework.batch.item.xml.StaxEventItemReader;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import java.util.Map;
 
 @Configuration
-@EnableBatchProcessing
-@EnableAutoConfiguration
 @RequiredArgsConstructor
 public class BatchConfig {
 
@@ -49,8 +47,8 @@ public class BatchConfig {
             "isonumber", "url", "phone", "bin_length", "affiliation", "mark"
     };
 
-    private final JobBuilderFactory jobBuilderFactory;
-    private final StepBuilderFactory stepBuilderFactory;
+    private final JobRepository jobRepository;
+    private final PlatformTransactionManager transactionManager;
     private final BinbaseService binbaseService;
 
     @Value("${batch.strict_mode}")
@@ -115,9 +113,8 @@ public class BatchConfig {
 
     @Bean
     public Job binBaseJob(Step step) {
-        return jobBuilderFactory.get("binBaseJob")
-                .flow(step)
-                .end()
+        return new JobBuilder("binBaseJob", jobRepository)
+                .start(step)
                 .build();
     }
 
@@ -128,10 +125,11 @@ public class BatchConfig {
                 .build();
     }
 
+
     @Bean
-    public Step step(MultiResourceItemReader multiResourceItemReader) {
-        return stepBuilderFactory.get("binBaseStep")
-                .<Resource, Map.Entry<BinData, Range<Long>>>chunk(1000)
+    public Step step(MultiResourceItemReader<BinData> multiResourceItemReader) {
+        return new StepBuilder("binBaseStep", jobRepository)
+                .<BinData, Map.Entry<BinData, Range<Long>>>chunk(1000, transactionManager)
                 .reader(multiResourceItemReader)
                 .processor(compositeProcessor())
                 .writer(new BinRangeWriter(binbaseService))
