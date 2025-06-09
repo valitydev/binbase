@@ -30,7 +30,7 @@
         <db.password>postgres</db.password>
         <db.schema>binbase</db.schema>
         <damsel.version>1.655-5ca4f4a</damsel.version>
-        <testcontainers.annotations.version>3.1.0</testcontainers.annotations.version>
+        <testcontainers.annotations.version>3.1.1</testcontainers.annotations.version>
     </properties>
 
     <dependencies>
