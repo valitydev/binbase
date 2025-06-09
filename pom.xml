@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>binbase</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>binbase</name>
@@ -117,7 +117,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>31.1-jre</version>
+            <version>32.0.0-android</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
