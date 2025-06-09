@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Transactional
 @PostgresqlTest
-@SpringBootTest(properties = "management.server.port=8023")
+@SpringBootTest
 class BinbaseServiceTest {
 
     @Autowired
