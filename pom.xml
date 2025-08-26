@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>binbase</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>binbase</name>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>dev.vality</groupId>
             <artifactId>binbase-proto</artifactId>
-            <version>1.25-6841072</version>
+            <version>1.26-23dbaf0</version>
         </dependency>
         <dependency>
             <groupId>dev.vality.geck</groupId>
